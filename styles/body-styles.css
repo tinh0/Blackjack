@@ -1,0 +1,73 @@
+.body-wrapper {
+    height: 600px;
+    width: 100%;
+    background-image: linear-gradient(to top left, rgb(243, 104, 40), rgb(11, 3, 48));
+    color: white;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 50px;
+}
+
+.body-wrapper > .body-left > .body-text {
+    font-family: 'Rajdhani', sans-serif;
+    color: white;
+    margin-top: 50px;
+    font-size: 2em;
+    margin-left: 50px;
+}
+
+.body-wrapper > .body-left > .body-text-two {
+    font-family: 'Lora', sans-serif;
+    color: #AAABAF;
+    opacity: 1.25;
+    margin-top: 50px;
+    font-size: 1.5em;
+    margin-left: 50px;
+}
+
+.body-wrapper > .body-right > .body-img-header {
+    margin-top: 70px;
+    color: white;
+    font-size: 1.3em;
+    font-family: 'Roboto Slab', serif;
+}
+
+.body-wrapper > .body-right > .body-image img {
+    width: 100%;
+    height: 500px;
+}
+
+.body-text b {
+    color: white;
+    opacity: 1;
+}
+
+.body-wrapper > .body-left > .body-buttons {
+    margin-top: 70px;
+}
+
+.signup-btn {
+    margin-left: 50px;
+    background-color: green;
+    color: black;
+    font-size: 2em;
+    padding: 15px 25px;
+    border: 1px transparent;
+    border-radius: 4px;
+    outline: none;
+    transition: 0.3s;
+    font-weight: 500;
+}
+
+.learn-more-btn {
+    margin-left: 20px;
+    background-color: black;
+    color: white;
+    font-size: 2em;
+    padding: 15px 25px;
+    border: 1px transparent;
+    border-radius: 4px;
+    outline: none;
+    transition: 0.3s;
+    font-weight: 500;
+}

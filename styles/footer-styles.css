@@ -1,0 +1,25 @@
+.footer {
+    height: 70px;
+    width: 100%;
+    background-color: blue;
+    color: white;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.footer > .footer-box {
+    width: 500px;
+    border: 1px gray solid;
+}
+
+.footer > .footer-box > .footer-textbox {
+    font-size: 1.3em;
+    font-family: 'Bitter', serif;
+    text-align: center;
+    margin-top: 18px;
+}
+
+.end-space {
+    height: 131px;
+    background-color: black;
+}

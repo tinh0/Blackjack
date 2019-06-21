@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Blackjack</title>
+    <meta name="viewport" content="width=device-width, initial scale=1">
+
+    <link href="https://use.fontawesome.com/releases/v5.0.1/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles/blackjack-styles.css">
+</head>
+
+<body>
+    <script src="twenty-one.js"></script>
+    <div class="title">Blackjack</div>
+    <div class="top-div">
+        <input type="text" id="dealer" placeholder="Dealer">
+        <input type="text" id="dealer-value" placeholder="0">
+        <button id="deal" onclick="deal()">Deal</button>
+    </div>
+
+    <div class="bottom-div">
+        <div class="player-wrapper">
+            <input type="text" id="player-one" placeholder="Player 1">
+            <input type="text" id="player-one-value" placeholder="0">
+            <button class="hit" onclick="hit()">Hit</button>
+            <button class="pass" onclick="pass()">Pass</button>
+        </div>
+
+        <div class="player-wrapper">
+            <input type="text" id="player-two" placeholder="Player 2">
+            <input type="text" id="player-two-value" placeholder="0">
+            <button class="hit" onclick="hit()">Hit</button>
+            <button class="pass" onclick="pass()">Pass</button>
+        </div>
+
+        <div class="player-wrapper">
+            <input type="text" id="player-three" placeholder="Player 3">
+            <input type="text" id="player-three-value" placeholder="0">
+            <button class="hit" onclick="hit()">Hit</button>
+            <button class="pass" onclick="pass()">Pass</button>
+        </div>
+
+        <div class="player-wrapper">
+            <input type="text" id="player-four" placeholder="Player 4">
+            <input type="text" id="player-four-value" placeholder="0">
+            <button class="hit" onclick="hit()">Hit</button>
+            <button class="pass" onclick="pass()">Pass</button>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

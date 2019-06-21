@@ -1,0 +1,99 @@
+body {
+    margin: 0px;
+}
+
+.navigation-wrapper {
+    height: 80px;
+    background-color: black;
+    color: white;
+    margin: 0px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.navigation-wrapper > .codepen-logo img {
+    height: 80px;
+    background-image: none;
+    filter: invert(100%);
+    margin-left: 10px;
+    margin-top: -10px;
+}
+
+.navigation-wrapper > .explore-wrapper {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: -500px;
+    margin-right: -200px;
+}
+
+.navigation-wrapper > .explore-wrapper > .links-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.navigation-wrapper > .explore-wrapper > .explore a {
+    color: #F7E817;
+    font-size: 1.1em;
+    text-decoration: none;
+}
+
+.navigation-wrapper > .explore-wrapper > .links-wrapper > .nav-link a {
+    text-decoration: none;
+    color: white;
+}
+
+.navigation-wrapper > .explore-wrapper > .links-wrapper > .nav-link {
+    font-family: 'Roboto Slab', serif;
+    font-weight: 900;
+}
+
+.navigation-wrapper > .explore-wrapper > .links-wrapper > .dropdown-nav {
+    opacity: 0.75;
+    font-size: 1em;
+    margin-left: 30px;
+    font-family: 'Roboto Slab', serif;
+}
+
+.navigation-wrapper > .explore-wrapper > .links-wrapper > .dropdown-nav::after {
+    /* Current bug with new font awesome kits Pro instead of Free */
+    font-family: "Font Awesome 5 Free";
+    content: " \f078";
+    font-weight: 900;
+    margin-left: 10px;
+}
+
+.startup-wrapper {
+    width: 450px;
+    margin-left: -250px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.startup-wrapper > .start-up-icon {
+    font-size: 2em;
+    opacity: .45;
+}
+
+
+.nav-btn {
+    background: rgba(255, 255, 255, .25);
+    color: white;
+    font-size: 1.15em;
+    padding: 15px 25px;
+    border: 1px transparent;
+    border-radius: 2px;
+    outline: none;
+    transition: 0.3s;
+    font-weight: 500;
+}
+
+.nav-btn i {
+    color: #32CD32;
+}
