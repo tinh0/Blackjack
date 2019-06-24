@@ -12,41 +12,37 @@
 <body>
     <script src="twenty-one.js"></script>
     <div class="title">Blackjack</div>
-    <div class="top-div">
+    <div class="dealer-wrapper">
         <input type="text" id="dealer" placeholder="Dealer">
         <input type="text" id="dealer-value" placeholder="0">
-        <button id="deal" onclick="deal()">Deal</button>
     </div>
 
-    <div class="bottom-div">
         <div class="player-wrapper">
             <input type="text" id="player-one" placeholder="Player 1">
             <input type="text" id="player-one-value" placeholder="0">
-            <button id="hit1" onclick="hit(1)" disabled="true">Hit</button>
-            <button id="pass1" onclick="pass(1)" disabled="true">Pass</button>
         </div>
 
         <div class="player-wrapper">
             <input type="text" id="player-two" placeholder="Player 2">
             <input type="text" id="player-two-value" placeholder="0">
-            <button id="hit2" onclick="hit(2)" disabled="true">Hit</button>
-            <button id="pass2" onclick="pass(2)" disabled="true">Pass</button>
         </div>
 
         <div class="player-wrapper">
             <input type="text" id="player-three" placeholder="Player 3">
             <input type="text" id="player-three-value" placeholder="0">
-            <button id="hit3" onclick="hit(3)" disabled="true">Hit</button>
-            <button id="pass3" onclick="pass(3)" disabled="true">Pass</button>
         </div>
 
         <div class="player-wrapper">
             <input type="text" id="player-four" placeholder="Player 4">
             <input type="text" id="player-four-value" placeholder="0">
-            <button id="hit4" onclick="hit(4)" disabled="true">Hit</button>
-            <button id="pass4" onclick="pass(4)" disabled="true">Pass</button>
         </div>
-    </div>
+
+        <div class="action-wrapper">
+            <button id="deal" onclick="deal()">Deal</button>
+            <button id ="hit" onclick = "hit(1)" disabled="true">Hit</button>
+            <button id="pass" onclick="pass(1)" disabled="true">Pass</button>
+            <div id="player">Dealer</div>
+        </div>
 
 
 </body>

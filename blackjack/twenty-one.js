@@ -11,7 +11,7 @@ var playerFourValue = 0;
 
 function deal() {
     document.getElementById("deal").disabled = true;
-    dealerCards.push(convertCard(randomCard()), convertCard(randomCard()));
+    dealerCards.push(convertCard(randomCard()));
     playerOneCards.push(convertCard(randomCard()), convertCard(randomCard()));
     playerTwoCards.push(convertCard(randomCard()), convertCard(randomCard()));
     playerThreeCards.push(convertCard(randomCard()), convertCard(randomCard()));
@@ -24,18 +24,9 @@ function deal() {
     updateCards(2, 3);
     updateCards(2, 4);
 
-
-    for (var x = 0; x < 7; x++) {
-        if (parseInt(document.getElementById("dealer-value").value) < 17) {
-            console.log(document.getElementById("dealer-value").value)
-            dealerCards.push(convertCard(randomCard()));
-            updateTotals();
-            updateCards(1, 0);
-        }
-    }
-
-    document.getElementById("hit1").disabled = false;
-    document.getElementById("pass1").disabled = false;
+    document.getElementById("hit").disabled = false;
+    document.getElementById("pass").disabled = false;
+    document.getElementById("player").innerHTML = "Player 1";
 
     checkIf21(playerOneCards);
 }
@@ -104,11 +95,15 @@ function convertCard(x) {
     return card;
 }
 
-function getValue(x) {
+function getValue(x, currentTotal) {
     var card;
     switch (x) {
         case "Ace":
-            card = 11;
+            if (currentTotal > 10) {
+                card = 1;
+            } else {
+                card = 11;
+            }
             break;
 
         case 2:
@@ -161,6 +156,7 @@ function getValue(x) {
         default:
             break;
     }
+
     return parseInt(card);
 }
 
@@ -222,7 +218,6 @@ function updateCards(y, z) {
 }
 
 function updateTotals() {
-
     var dealerCardsValue = 0;
     var playerOneValue = 0;
     var playerTwoValue = 0;
@@ -230,27 +225,27 @@ function updateTotals() {
     var playerFourValue = 0;
 
     for (var x = 0; x < dealerCards.length; x++) {
-        dealerCardsValue += getValue(dealerCards[x]);
+        dealerCardsValue += getValue(dealerCards[x], parseInt(document.getElementById("dealer-value").value));
         document.getElementById("dealer-value").value = dealerCardsValue;
     }
 
     for (var x = 0; x < playerOneCards.length; x++) {
-        playerOneValue += getValue(playerOneCards[x]);
+        playerOneValue += getValue(playerOneCards[x], parseInt(document.getElementById("player-one-value").value));
         document.getElementById("player-one-value").value = playerOneValue;
     }
 
     for (var x = 0; x < playerTwoCards.length; x++) {
-        playerTwoValue += getValue(playerTwoCards[x]);
+        playerTwoValue += getValue(playerTwoCards[x], parseInt(document.getElementById("player-two-value").value));
         document.getElementById("player-two-value").value = playerTwoValue;
     }
 
     for (var x = 0; x < playerThreeCards.length; x++) {
-        playerThreeValue += getValue(playerThreeCards[x]);
+        playerThreeValue += getValue(playerThreeCards[x], parseInt(document.getElementById("player-three-value").value));
         document.getElementById("player-three-value").value = playerThreeValue;
     }
 
     for (var x = 0; x < playerFourCards.length; x++) {
-        playerFourValue += getValue(playerFourCards[x]);
+        playerFourValue += getValue(playerFourCards[x], parseInt(document.getElementById("player-four-value").value));
         document.getElementById("player-four-value").value = playerFourValue;
     }
 }
@@ -262,15 +257,13 @@ function hit(x) {
             updateCards(1, 1);
             updateTotals();
             if (parseInt(document.getElementById("player-one-value").value) > 21) {
-                document.getElementById("hit1").disabled = true;
-                document.getElementById("pass1").disabled = true;
-                document.getElementById("hit2").disabled = false;
-                document.getElementById("pass2").disabled = false;
+                document.getElementById("hit").onclick = function () { hit(2) };
+                document.getElementById("pass").onclick = function () { pass(2) };
+                document.getElementById("player").innerHTML = "Player 2";
             } else if (parseInt(document.getElementById("player-one-value").value) == 21) {
-                document.getElementById("hit1").disabled = true;
-                document.getElementById("pass1").disabled = true;
-                document.getElementById("hit2").disabled = false;
-                document.getElementById("pass2").disabled = false;
+                document.getElementById("hit").onclick = function () { hit(2) };
+                document.getElementById("pass").onclick = function () { pass(2) };
+                document.getElementById("player").innerHTML = "Player 2";
             }
             checkIf21(playerTwoCards);
             break;
@@ -280,17 +273,13 @@ function hit(x) {
             updateCards(1, 2);
             updateTotals();
             if (parseInt(document.getElementById("player-two-value").value) > 21) {
-                document.getElementById("hit2").disabled = true;
-                document.getElementById("pass2").disabled = true;
-                document.getElementById("hit3").disabled = false;
-                document.getElementById("pass3").disabled = false;
-
+                document.getElementById("hit").onclick = function () { hit(3) };
+                document.getElementById("pass").onclick = function () { pass(3) };
+                document.getElementById("player").innerHTML = "Player 3";
             } else if (parseInt(document.getElementById("player-two-value").value) == 21) {
-                document.getElementById("hit2").disabled = true;
-                document.getElementById("pass2").disabled = true;
-                document.getElementById("hit3").disabled = false;
-                document.getElementById("pass3").disabled = false;
-
+                document.getElementById("hit").onclick = function () { hit(3) };
+                document.getElementById("pass").onclick = function () { pass(3) };
+                document.getElementById("player").innerHTML = "Player 3";
             }
             checkIf21(playerThreeCards);
             break;
@@ -300,15 +289,13 @@ function hit(x) {
             updateCards(1, 3);
             updateTotals();
             if (parseInt(document.getElementById("player-three-value").value) > 21) {
-                document.getElementById("hit3").disabled = true;
-                document.getElementById("pass3").disabled = true;
-                document.getElementById("hit4").disabled = false;
-                document.getElementById("pass4").disabled = false;
+                document.getElementById("hit").onclick = function () { hit(4) };
+                document.getElementById("pass").onclick = function () { pass(4) };
+                document.getElementById("player").innerHTML = "Player 4";
             } else if (parseInt(document.getElementById("player-three-value").value) == 21) {
-                document.getElementById("hit3").disabled = true;
-                document.getElementById("pass3").disabled = true;
-                document.getElementById("hit4").disabled = false;
-                document.getElementById("pass4").disabled = false;
+                document.getElementById("hit").onclick = function () { hit(4) };
+                document.getElementById("pass").onclick = function () { pass(4) };
+                document.getElementById("player").innerHTML = "Player 4";
             }
             checkIf21(playerFourCards);
             break;
@@ -318,11 +305,15 @@ function hit(x) {
             updateCards(1, 4);
             updateTotals();
             if (parseInt(document.getElementById("player-four-value").value) > 21) {
-                document.getElementById("hit4").disabled = true;
-                document.getElementById("pass4").disabled = true;
+                document.getElementById("hit").disabled = true;
+                document.getElementById("pass").disabled = true;
+                dealerHit();
+                document.getElementById("player").innerHTML = "Dealer";
             } else if (parseInt(document.getElementById("player-four-value").value) == 21) {
-                document.getElementById("hit4").disabled = true;
-                document.getElementById("pass4").disabled = true;
+                document.getElementById("hit").disabled = true;
+                document.getElementById("pass").disabled = true;
+                dealerHit();
+                document.getElementById("player").innerHTML = "Dealer";
             }
             break;
         default:
@@ -333,29 +324,28 @@ function hit(x) {
 function pass(x) {
     switch (x) {
         case 1:
-            document.getElementById("hit1").disabled = true;
-            document.getElementById("pass1").disabled = true;
-            document.getElementById("hit2").disabled = false;
-            document.getElementById("pass2").disabled = false;
+            document.getElementById("hit").onclick = function () { hit(2) };
+            document.getElementById("pass").onclick = function () { pass(2) };
+            document.getElementById("player").innerHTML = "Player 2";
             checkIf21(playerTwoCards);
             break;
         case 2:
-            document.getElementById("hit2").disabled = true;
-            document.getElementById("pass2").disabled = true;
-            document.getElementById("hit3").disabled = false;
-            document.getElementById("pass3").disabled = false;
+            document.getElementById("hit").onclick = function () { hit(3) };
+            document.getElementById("pass").onclick = function () { pass(3) };
+            document.getElementById("player").innerHTML = "Player 3";
             checkIf21(playerThreeCards);
             break;
         case 3:
-            document.getElementById("hit3").disabled = true;
-            document.getElementById("pass3").disabled = true;
-            document.getElementById("hit4").disabled = false;
-            document.getElementById("pass4").disabled = false;
+            document.getElementById("hit").onclick = function () { hit(4) };
+            document.getElementById("pass").onclick = function () { pass(4) };
+            document.getElementById("player").innerHTML = "Player 4";
             checkIf21(playerFourCards);
             break;
         case 4:
-            document.getElementById("hit4").disabled = true;
-            document.getElementById("pass4").disabled = true;
+            document.getElementById("hit").disabled = true;
+            document.getElementById("pass").disabled = true;
+            document.getElementById("player").innerHTML = "Dealer";
+            dealerHit();
             break;
         default:
             break;
@@ -366,36 +356,93 @@ function checkIf21(arr) {
     switch (arr) {
         case playerOneCards:
             if (document.getElementById("player-one-value").value == 21) {
-                document.getElementById("hit1").disabled = true;
-                document.getElementById("pass1").disabled = true;
-                document.getElementById("hit2").disabled = false;
-                document.getElementById("pass2").disabled = false;
+                document.getElementById("hit").onclick = function () { hit(2) };
+                document.getElementById("pass").onclick = function () { pass(2) };
+                document.getElementById("player").innerHTML = "Player 2";
             }
             break;
 
         case playerTwoCards:
             if (document.getElementById("player-two-value").value == 21) {
-                document.getElementById("hit2").disabled = true;
-                document.getElementById("pass2").disabled = true;
-                document.getElementById("hit3").disabled = false;
-                document.getElementById("pass3").disabled = false;
+                document.getElementById("hit").onclick = function () { hit(3) };
+                document.getElementById("pass").onclick = function () { pass(3) };
+                document.getElementById("player").innerHTML = "Player 3";
             }
             break;
 
         case playerThreeCards:
             if (document.getElementById("player-three-value").value == 21) {
-                document.getElementById("hit3").disabled = true;
-                document.getElementById("pass3").disabled = true;
-                document.getElementById("hit4").disabled = false;
-                document.getElementById("pass4").disabled = false;
+                document.getElementById("hit").onclick = function () { hit(4) };
+                document.getElementById("pass").onclick = function () { pass(4) };
+                document.getElementById("player").innerHTML = "Player 4";
             }
             break;
 
         case playerFourCards:
             if (document.getElementById("player-four-value").value == 21) {
-                document.getElementById("hit4").disabled = true;
-                document.getElementById("pass4").disabled = true;
+                document.getElementById("hit").disabled = true;
+                document.getElementById("pass").disabled = true;
+                document.getElementById("player").innerHTML = "Dealer";
+                dealerHit();
             }
             break;
     }
+}
+
+function dealerHit() {
+    for (var x = 0; x < 7; x++) {
+        if (parseInt(document.getElementById("dealer-value").value) < 17) {
+            dealerCards.push(convertCard(randomCard()));
+            updateTotals();
+            updateCards(1, 0);
+        }
+    }
+    document.getElementById("deal").disabled = false;
+    document.getElementById("deal").onclick = function () { reset() };
+}
+
+function randomSuit() {
+    var suit = Math.floor(Math.random() * Math.floor(4));
+    var suits;
+    switch (suit) {
+        case 0:
+            suits = "Clover";
+            break;
+
+        case 1:
+            suits = "Clubs";
+            break;
+
+        case 2:
+            suits = "Hearts";
+            break;
+
+        case 3:
+            suits = "Diamonds"
+            break;
+    }
+    return suits;
+}
+
+function reset() {
+    dealerCards = [];
+    playerOneCards = [];
+    playerTwoCards = [];
+    playerThreeCards = [];
+    playerFourCards = [];
+    document.getElementById("dealer-value").value = "";
+    document.getElementById("player-one-value").value = "";
+    document.getElementById("player-two-value").value = "";
+    document.getElementById("player-three-value").value = "";
+    document.getElementById("player-four-value").value = "";
+    document.getElementById("dealer").value = "";
+    document.getElementById("player-one").value = "";
+    document.getElementById("player-two").value = "";
+    document.getElementById("player-three").value = "";
+    document.getElementById("player-four").value = "";
+    document.getElementById("hit").disabled = true;
+    document.getElementById("pass").disabled = true;
+    document.getElementById("hit").onclick = function () { hit(1) };
+    document.getElementById("pass").onclick = function () { pass(1) };
+    deal();
 }
