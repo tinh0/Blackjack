@@ -218,16 +218,10 @@ function updateCards(y, z) {
 }
 
 function updateTotals() {
-    var dealerCardsValue = 0;
-    var playerOneValue = 0;
-    var playerTwoValue = 0;
-    var playerThreeValue = 0;
-    var playerFourValue = 0;
 
-    for (var x = 0; x < dealerCards.length; x++) {
-        dealerCardsValue += getValue(dealerCards[x], parseInt(document.getElementById("dealer-value").value));
-        document.getElementById("dealer-value").value = dealerCardsValue;
-    }
+    dealerCardsValue = dealerCards.reduce(arraySum);
+    document.getElementById("dealer-value").value = dealerCardsValue;
+    
 
     for (var x = 0; x < playerOneCards.length; x++) {
         playerOneValue += getValue(playerOneCards[x], parseInt(document.getElementById("player-one-value").value));
@@ -445,4 +439,8 @@ function reset() {
     document.getElementById("hit").onclick = function () { hit(1) };
     document.getElementById("pass").onclick = function () { pass(1) };
     deal();
+}
+
+function arraySum(total, num) {
+    return total + num;
 }

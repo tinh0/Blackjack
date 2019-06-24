@@ -1,0 +1,77 @@
+body {
+    margin: 0px;
+}
+
+.main-wrapper {
+    display: flex;
+    background-color: green;
+    height: 672px;
+}
+
+.board-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 730px;
+
+}
+
+#player {
+    font-size: 1.5em;
+    color: rgb(255, 94, 0);
+}
+
+.player-wrapper {
+    border-top: 3px white dotted;
+    margin-bottom: 140px;
+}
+
+.title {
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: center;
+    height: 50px;
+    font-size: 2em;
+}
+
+.action-wrapper {
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    background-color: #045983;
+    width: 760px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bottom-div {
+    margin-right: 80px;
+    width: 700px;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.bottom-div > .to-play-div {
+    color: white;
+    font-size: 2em;
+}
+
+#deal, #hit, #pass  {
+    height: 100%;
+    width: 100%;
+    padding: 40px;
+    background-color: rgb(119, 0, 255);
+    color: white;
+    border: 1px transparent;
+    font-size: 3em;
+}
+
+#deal:disabled, #hit:disabled, #pass:disabled {
+    color: gray;
+}
+
+
