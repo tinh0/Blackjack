@@ -2,50 +2,43 @@ body {
     margin: 0px;
 }
 
-.main-wrapper {
-    display: flex;
-    background-color: green;
-    height: 672px;
-}
-
-.board-wrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 730px;
-}
-
-#player {
-    font-size: 1.5em;
-    color: rgb(255, 94, 0);
-}
-
-.player-wrapper {
-    border-top: 3px white dotted;
-    margin-bottom: 140px;
-    display: flex;
-}
-
 .title {
     background-color: black;
     color: white;
     display: flex;
     justify-content: center;
-    height: 50px;
+    height: 5vh;
     font-size: 2em;
 }
 
-.action-wrapper {
+.main-wrapper {
     display: flex;
-    flex-direction: row;
-    padding: 10px;
-    background-color: #045983;
-    width: 760px;
-    justify-content: space-between;
-    align-items: center;
+    background-color: green;
+    width: 100%;
+    height: 95vh;
 }
 
-.bottom-div {
+.main-wrapper > .left-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 750px;
+}
+
+.main-wrapper > .left-wrapper > .player-wrapper {
+    border-top: 3px white dotted;
+    border-right: 3px white dotted;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5px;
+}
+
+.main-wrapper > .left-wrapper > .player-wrapper > .value {
+    display: flex;
+}
+
+.right-wrapper {
     margin-right: 80px;
     width: 700px;
     position: fixed;
@@ -55,19 +48,37 @@ body {
     flex-direction: column;
 }
 
-.bottom-div > .to-play-div {
+.right-wrapper > .to-play {
     color: white;
     font-size: 2em;
+    margin-left: 400px;
+}
+
+.right-wrapper > .action-wrapper {
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    background-color: #045983;
+    height: 120px;
+    width: 500px;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 260px;
 }
 
 #deal, #hit, #pass  {
     height: 100%;
     width: 100%;
-    padding: 40px;
+    padding: 30px;
     background-color: rgb(119, 0, 255);
     color: white;
     border: 1px transparent;
     font-size: 3em;
+}
+
+#player {
+    font-size: 1.5em;
+    color: rgb(255, 94, 0);
 }
 
 #deal:disabled, #hit:disabled, #pass:disabled {
@@ -76,7 +87,6 @@ body {
 
 #bust-one, #bust-two, #bust-three, #bust-four, #bust-dealer {
     color: white;
-    font-size: 1.3em;
     text-decoration: bold;
     margin-left: 10px;
 }
@@ -84,3 +94,55 @@ body {
 #bust-dealer {
     float: right;
 }
+
+.card-holder {
+    display: flex;
+    margin-left: 20px;
+}
+
+.card {
+    height: 140px;
+    width: 100px;
+    background-color: white;
+    border-radius: 2px;
+    margin-top: 20px;
+    margin-left: 15px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+#dealer-card-holder {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    width: 115%;
+    margin-bottom: 20px;
+    border-bottom: 3px white dotted;
+}
+
+.top-value {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 5px;
+    text-decoration: bold;
+    font-size: 1.3em;
+    color: black;
+}
+
+.bottom-value {
+    position: absolute;
+    bottom: 0px;
+    right: 0;
+    margin: 5px;
+    text-decoration: bold;
+    color: black;
+    font-size: 1.3em;
+}
+
+.card img {
+    height: 50px;
+    width: 50px;
+    padding: 45px 25px;
+    background-color: white;
+}
+

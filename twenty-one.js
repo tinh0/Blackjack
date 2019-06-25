@@ -8,11 +8,12 @@ var playerOneValue = 0;
 var playerTwoValue = 0;
 var playerThreeValue = 0;
 var playerFourValue = 0;
-var cards = ["Ace", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, "Jack", "Queen", "King"];
+var cards = ["Ace", 2, 3, 4, 5, 6, 7, 8, 9, 10, "Jack", "Queen", "King"];
 
 function deal() {
     document.getElementById("deal").disabled = true;
     dealerCards.push(getCard());
+    createCard("dealer-cards", dealerCards);
     playerOneCards.push(getCard(), getCard());
     playerTwoCards.push(getCard(), getCard());
     playerThreeCards.push(getCard(), getCard());
@@ -286,27 +287,35 @@ function dealerHit() {
     document.getElementById("deal").onclick = function () { reset() };
 }
 
-function randomSuit() {
-    var suit = Math.floor(Math.random() * Math.floor(4));
-    var suits;
-    switch (suit) {
-        case 0:
-            suits = "Clover";
-            break;
+function createCard(player, arr) {
+    var cardNumber = arr.length - 1
+    var targetCard = document.getElementById(player).getElementsByClassName("card")[cardNumber];
+    targetCard.style.display = "block"
 
-        case 1:
-            suits = "Clubs";
-            break;
+    var cardRank = arr[cardNumber].toString().substring(0,1);
+    var suit = document.createElement("img");
+    var suits = randomSuit()
+    suit.src = suits;
 
-        case 2:
-            suits = "Hearts";
-            break;
-
-        case 3:
-            suits = "Diamonds"
-            break;
+    if (suits == "images/diamond.png" || suits == "images/heart.png") {
+        targetCard.getElementsByClassName("top-value")[0].style.color = "red";
+        targetCard.getElementsByClassName("bottom-value")[0].style.color = "red";
     }
-    return suits;
+
+    targetCard.getElementsByClassName("top-value")[0].innerHTML = cardRank;
+    targetCard.getElementsByClassName("bottom-value")[0].innerHTML = cardRank;
+
+    var formatString = player.substr(0, player.indexOf("-")) + arr.length;
+    console.log(formatString);
+    document.getElementById(formatString).appendChild(suit);
+    
+    console.log(arr); 
+}
+
+function randomSuit() {
+    var suits = ["images/clover.png", "images/diamond.png", "images/heart.png", "images/spade.png"];
+    var suit = suits[Math.floor(Math.random() * Math.floor(4))];
+    return suit;
 }
 
 function reset() {

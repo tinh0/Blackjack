@@ -12,45 +12,119 @@
     <script src="twenty-one.js"></script>
     <div class="title">Blackjack</div>
     <div class="main-wrapper">
-        <div class="board-wrapper">
+        <div class="left-wrapper">
             <div class="player-wrapper">
-                <input type="text" id="player-one" placeholder="Player 1">
-                <input type="text" id="player-one-value" placeholder="0">
-                <span id="bust-one" hidden>Bust</span>
+                <div class="value">
+                    <input type="text" id="player-one" placeholder="Player 1">
+                    <input type="text" id="player-one-value" placeholder="0">
+                    <span id="bust-one" hidden>Bust</span>
+                </div>
+                <div class="card-holder">
+                    <div class="card"></div>
+                    <div class="card"></div>
+                    <div class="card"></div>
+                    <div class="card"></div>
+                    <div class="card"></div>
+                    <div class="card"></div>
+                </div>
             </div>
 
             <div class="player-wrapper">
-                <input type="text" id="player-two" placeholder="Player 2">
-                <input type="text" id="player-two-value" placeholder="0">
-                <span id="bust-two" hidden>Bust</span>
+                <div class="value">
+                    <input type="text" id="player-two" placeholder="Player 2">
+                    <input type="text" id="player-two-value" placeholder="0">
+                    <span id="bust-two" hidden>Bust</span>
+                </div>
+                <div class="card-holder">
+                    <div class="card"></div>
+                    <div class="card"></div>
+                    <div class="card"></div>
+                    <div class="card"></div>
+                    <div class="card"></div>
+                    <div class="card"></div>
+                </div>
             </div>
 
             <div class="player-wrapper">
-                <input type="text" id="player-three" placeholder="Player 3">
-                <input type="text" id="player-three-value" placeholder="0">
-                <span id="bust-three" hidden>Bust</span>
+                <div class="value">
+                    <input type="text" id="player-three" placeholder="Player 3">
+                    <input type="text" id="player-three-value" placeholder="0">
+                    <span id="bust-three" hidden>Bust</span>
+                </div>
+                <div class="card-holder">
+                    <div class="card"></div>
+                    <div class="card"></div>
+                    <div class="card"></div>
+                    <div class="card"></div>
+                    <div class="card"></div>
+                    <div class="card"></div>
+                </div>
             </div>
 
             <div class="player-wrapper">
-                <input type="text" id="player-four" placeholder="Player 4">
-                <input type="text" id="player-four-value" placeholder="0">
-                <span id="bust-four" hidden>Bust</span>
+                <div class="value">
+                    <input type="text" id="player-four" placeholder="Player 4">
+                    <input type="text" id="player-four-value" placeholder="0">
+                    <span id="bust-four" hidden>Bust</span>
+                </div>
+                <div class="card-holder">
+                    <div class="card"></div>
+                    <div class="card"></div>
+                    <div class="card"></div>
+                    <div class="card"></div>
+                    <div class="card"></div>
+                    <div class="card"></div>
+                </div>
             </div>
         </div>
 
         <div class="dealer-wrapper">
-            <input type="text" id="dealer" placeholder="Dealer">
-            <input type="text" id="dealer-value" placeholder="0">
-            <span id="bust-dealer" hidden>Bust</span>
+            <div class="value">
+                <input type="text" id="dealer" placeholder="Dealer">
+                <input type="text" id="dealer-value" placeholder="0">
+                <span id="bust-dealer" hidden>Bust</span>
+            </div>
+            <div id="dealer-cards">
+                <div class="card" hidden>
+                    <div id="dealer1"></div>
+                    <div class="top-value"></div>
+                    <div class="bottom-value"></div>
+                </div>
+                <div class="card" hidden>
+                    <div class="top-value"></div>
+                    <div id="dealer2"></div>
+                    <div class="bottom-value"></div>
+                </div>
+                <div class="card" hidden>
+                    <div class="top-value"></div>
+                    <div id="dealer3"></div>
+                    <div class="bottom-value"></div>
+                </div>
+                <div class="card" hidden>
+                    <div class="top-value"></div>
+                    <div id="dealer4"></div>
+                    <div class="bottom-value"></div>
+                </div>
+                <div class="card" hidden>
+                    <div class="top-value"></div>
+                    <div id="dealer5"></div>
+                    <div class="bottom-value"></div>
+                </div>
+                <div class="card" hidden>
+                    <div class="top-value"></div>
+                    <div id="dealer6"></div>
+                    <div class="bottom-value"></div>
+                </div>
+            </div>
         </div>
     </div>
 
 
-    <div class="bottom-div">
-       
-        <div class="to-play-div">
+
+    <div class="right-wrapper">
+        <div class="to-play">
             To Play: <span id="player"> Dealer</span>
-        </div> 
+        </div>
 
         <div class="action-wrapper">
             <div class="deal-button">
@@ -64,6 +138,8 @@
             </div>
         </div>
     </div>
+
+
 </body>
 
 </html>
