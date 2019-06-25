@@ -13,7 +13,6 @@ body {
     flex-direction: column;
     justify-content: space-between;
     width: 730px;
-
 }
 
 #player {
@@ -24,6 +23,7 @@ body {
 .player-wrapper {
     border-top: 3px white dotted;
     margin-bottom: 140px;
+    display: flex;
 }
 
 .title {
@@ -74,4 +74,13 @@ body {
     color: gray;
 }
 
+#bust-one, #bust-two, #bust-three, #bust-four, #bust-dealer {
+    color: white;
+    font-size: 1.3em;
+    text-decoration: bold;
+    margin-left: 10px;
+}
 
+#bust-dealer {
+    float: right;
+}

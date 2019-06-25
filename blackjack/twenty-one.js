@@ -8,14 +8,15 @@ var playerOneValue = 0;
 var playerTwoValue = 0;
 var playerThreeValue = 0;
 var playerFourValue = 0;
+var cards = ["Ace", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, "Jack", "Queen", "King"];
 
 function deal() {
     document.getElementById("deal").disabled = true;
-    dealerCards.push(convertCard(randomCard()));
-    playerOneCards.push(convertCard(randomCard()), convertCard(randomCard()));
-    playerTwoCards.push(convertCard(randomCard()), convertCard(randomCard()));
-    playerThreeCards.push(convertCard(randomCard()), convertCard(randomCard()));
-    playerFourCards.push(convertCard(randomCard()), convertCard(randomCard()));
+    dealerCards.push(getCard());
+    playerOneCards.push(getCard(), getCard());
+    playerTwoCards.push(getCard(), getCard());
+    playerThreeCards.push(getCard(), getCard());
+    playerFourCards.push(getCard(), getCard());
 
     updateTotals();
     updateCards(2, 0);
@@ -31,133 +32,9 @@ function deal() {
     checkIf21(playerOneCards);
 }
 
-function randomCard() {
-    return Math.floor(Math.random() * Math.floor(13));
-}
-
-function convertCard(x) {
-    var card;
-    switch (x) {
-        case 0:
-            card = "Ace";
-            break;
-
-        case 1:
-            card = 2;
-            break;
-
-        case 2:
-            card = 3;
-            break;
-
-        case 3:
-            card = 4;
-            break;
-
-        case 4:
-            card = 5;
-            break;
-
-        case 5:
-            card = 6;
-            break;
-
-        case 6:
-            card = 7;
-            break;
-
-        case 7:
-            card = 8;
-            break;
-
-        case 8:
-            card = 9;
-            break;
-
-        case 9:
-            card = 10;
-            break;
-
-        case 10:
-            card = "Jack";
-            break;
-
-        case 11:
-            card = "Queen";
-            break;
-
-        case 12:
-            card = "King";
-            break;
-        default:
-            break;
-    }
+function getCard() {
+    var card = cards[Math.floor(Math.random() * Math.floor(13))];
     return card;
-}
-
-function getValue(x, currentTotal) {
-    var card;
-    switch (x) {
-        case "Ace":
-            if (currentTotal > 10) {
-                card = 1;
-            } else {
-                card = 11;
-            }
-            break;
-
-        case 2:
-            card = 2;
-            break;
-
-        case 3:
-            card = 3;
-            break;
-
-        case 4:
-            card = 4;
-            break;
-
-        case 5:
-            card = 5;
-            break;
-
-        case 6:
-            card = 6;
-            break;
-
-        case 7:
-            card = 7;
-            break;
-
-        case 8:
-            card = 8;
-            break;
-
-        case 9:
-            card = 9;
-            break;
-
-        case 10:
-            card = 10;
-            break;
-
-        case "Jack":
-            card = 10;
-            break;
-
-        case "Queen":
-            card = 10;
-            break;
-
-        case "King":
-            card = 10;
-            break;
-        default:
-            break;
-    }
-
-    return parseInt(card);
 }
 
 function updateCards(y, z) {
@@ -217,43 +94,47 @@ function updateCards(y, z) {
     }
 }
 
+function getHandValue(array) {
+    var total = 0;
+    var aceCount = 0;
+    for (var i = 0; i < array.length; i++) {
+        if (array[i] == "Ace") {
+            total += 1;
+            aceCount++;
+        } else if (array[i] == "King" || array[i] == "Queen" || array[i] == "Jack") {
+            total += 10;
+        } else {
+            total += array[i];
+        }
+    }
+
+    for (var i = 0; i < aceCount; i++) {
+        if (total + 10 <= 21) {
+            total += 10;
+        }
+    }
+    return total;
+}
+
 function updateTotals() {
-
-    dealerCardsValue = dealerCards.reduce(arraySum);
-    document.getElementById("dealer-value").value = dealerCardsValue;
-    
-
-    for (var x = 0; x < playerOneCards.length; x++) {
-        playerOneValue += getValue(playerOneCards[x], parseInt(document.getElementById("player-one-value").value));
-        document.getElementById("player-one-value").value = playerOneValue;
-    }
-
-    for (var x = 0; x < playerTwoCards.length; x++) {
-        playerTwoValue += getValue(playerTwoCards[x], parseInt(document.getElementById("player-two-value").value));
-        document.getElementById("player-two-value").value = playerTwoValue;
-    }
-
-    for (var x = 0; x < playerThreeCards.length; x++) {
-        playerThreeValue += getValue(playerThreeCards[x], parseInt(document.getElementById("player-three-value").value));
-        document.getElementById("player-three-value").value = playerThreeValue;
-    }
-
-    for (var x = 0; x < playerFourCards.length; x++) {
-        playerFourValue += getValue(playerFourCards[x], parseInt(document.getElementById("player-four-value").value));
-        document.getElementById("player-four-value").value = playerFourValue;
-    }
+    document.getElementById("dealer-value").value = getHandValue(dealerCards);
+    document.getElementById("player-one-value").value = getHandValue(playerOneCards);
+    document.getElementById("player-two-value").value = getHandValue(playerTwoCards);
+    document.getElementById("player-three-value").value = getHandValue(playerThreeCards);
+    document.getElementById("player-four-value").value = getHandValue(playerFourCards);
 }
 
 function hit(x) {
     switch (x) {
         case 1:
-            playerOneCards.push(convertCard(randomCard()));
+            playerOneCards.push(getCard());
             updateCards(1, 1);
             updateTotals();
             if (parseInt(document.getElementById("player-one-value").value) > 21) {
                 document.getElementById("hit").onclick = function () { hit(2) };
                 document.getElementById("pass").onclick = function () { pass(2) };
                 document.getElementById("player").innerHTML = "Player 2";
+                document.getElementById("bust-one").style.display = "block";
             } else if (parseInt(document.getElementById("player-one-value").value) == 21) {
                 document.getElementById("hit").onclick = function () { hit(2) };
                 document.getElementById("pass").onclick = function () { pass(2) };
@@ -263,13 +144,14 @@ function hit(x) {
             break;
 
         case 2:
-            playerTwoCards.push(convertCard(randomCard()));
+            playerTwoCards.push(getCard());
             updateCards(1, 2);
             updateTotals();
             if (parseInt(document.getElementById("player-two-value").value) > 21) {
                 document.getElementById("hit").onclick = function () { hit(3) };
                 document.getElementById("pass").onclick = function () { pass(3) };
                 document.getElementById("player").innerHTML = "Player 3";
+                document.getElementById("bust-two").style.display = "block";
             } else if (parseInt(document.getElementById("player-two-value").value) == 21) {
                 document.getElementById("hit").onclick = function () { hit(3) };
                 document.getElementById("pass").onclick = function () { pass(3) };
@@ -279,13 +161,14 @@ function hit(x) {
             break;
 
         case 3:
-            playerThreeCards.push(convertCard(randomCard()));
+            playerThreeCards.push(getCard());
             updateCards(1, 3);
             updateTotals();
             if (parseInt(document.getElementById("player-three-value").value) > 21) {
                 document.getElementById("hit").onclick = function () { hit(4) };
                 document.getElementById("pass").onclick = function () { pass(4) };
                 document.getElementById("player").innerHTML = "Player 4";
+                document.getElementById("bust-three").style.display = "block";
             } else if (parseInt(document.getElementById("player-three-value").value) == 21) {
                 document.getElementById("hit").onclick = function () { hit(4) };
                 document.getElementById("pass").onclick = function () { pass(4) };
@@ -295,19 +178,20 @@ function hit(x) {
             break;
 
         case 4:
-            playerFourCards.push(convertCard(randomCard()));
+            playerFourCards.push(getCard());
             updateCards(1, 4);
             updateTotals();
             if (parseInt(document.getElementById("player-four-value").value) > 21) {
                 document.getElementById("hit").disabled = true;
                 document.getElementById("pass").disabled = true;
-                dealerHit();
+                document.getElementById("bust-four").style.display = "block";
                 document.getElementById("player").innerHTML = "Dealer";
+                dealerHit();
             } else if (parseInt(document.getElementById("player-four-value").value) == 21) {
                 document.getElementById("hit").disabled = true;
                 document.getElementById("pass").disabled = true;
-                dealerHit();
                 document.getElementById("player").innerHTML = "Dealer";
+                dealerHit();
             }
             break;
         default:
@@ -380,17 +264,24 @@ function checkIf21(arr) {
                 dealerHit();
             }
             break;
+        default:
+            break;
     }
 }
 
 function dealerHit() {
     for (var x = 0; x < 7; x++) {
         if (parseInt(document.getElementById("dealer-value").value) < 17) {
-            dealerCards.push(convertCard(randomCard()));
+            dealerCards.push(getCard());
             updateTotals();
             updateCards(1, 0);
         }
     }
+
+    if (parseInt(document.getElementById("dealer-value").value) > 21) {
+        document.getElementById("bust-dealer").style.display = "block";
+    }
+
     document.getElementById("deal").disabled = false;
     document.getElementById("deal").onclick = function () { reset() };
 }
@@ -438,9 +329,10 @@ function reset() {
     document.getElementById("pass").disabled = true;
     document.getElementById("hit").onclick = function () { hit(1) };
     document.getElementById("pass").onclick = function () { pass(1) };
+    document.getElementById("bust-one").style.display = "none";
+    document.getElementById("bust-two").style.display = "none";
+    document.getElementById("bust-three").style.display = "none";
+    document.getElementById("bust-four").style.display = "none";
+    document.getElementById("bust-dealer").style.display = "none";
     deal();
-}
-
-function arraySum(total, num) {
-    return total + num;
 }
