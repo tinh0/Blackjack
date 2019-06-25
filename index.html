@@ -3,157 +3,67 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Homepage</title>
+    <title>Blackjack</title>
     <meta name="viewport" content="width=device-width, initial scale=1">
-
-    <link href="https://use.fontawesome.com/releases/v5.0.1/css/all.css" rel="stylesheet">
-    <link rel="stylesheet" href="styles/header-styles.css">
-    <link rel="stylesheet" href="styles/body-styles.css">
-    <link rel="stylesheet" href="styles/footer-styles.css">
-    <link rel="stylesheet" href="styles/media-queries.css">
-
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Rajdhani&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Lora&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Bitter&display=swap" rel="stylesheet">
-
-    <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
+    <link rel="stylesheet" href="blackjack-styles.css">
 </head>
 
 <body>
-    <div class="navigation-wrapper">
-        <div class="codepen-logo">
-            <img src="images/Codepen.io_logo.png" alt="logo">
-        </div>
-
-        <div class="explore-wrapper">
-            <div class="explore">
-                <a href="./object-animation/object-animation.html">EXPLORE</a>
+    <script src="twenty-one.js"></script>
+    <div class="title">Blackjack</div>
+    <div class="main-wrapper">
+        <div class="board-wrapper">
+            <div class="player-wrapper">
+                <input type="text" id="player-one" placeholder="Player 1">
+                <input type="text" id="player-one-value" placeholder="0">
+                <span id="bust-one" hidden>Bust</span>
             </div>
 
-            <div class="links-wrapper">
-                <div class="nav-link">
-                    <a href="./calculator/calculator.html">Pens</a>
-                </div>
+            <div class="player-wrapper">
+                <input type="text" id="player-two" placeholder="Player 2">
+                <input type="text" id="player-two-value" placeholder="0">
+                <span id="bust-two" hidden>Bust</span>
+            </div>
 
-                <div class="nav-link">
-                    <a href="./blackjack/blackjack.html">Projects</a>
-                </div>
+            <div class="player-wrapper">
+                <input type="text" id="player-three" placeholder="Player 3">
+                <input type="text" id="player-three-value" placeholder="0">
+                <span id="bust-three" hidden>Bust</span>
+            </div>
 
-                <div class="nav-link">
-                    Posts
-                </div>
-
-                <div class="nav-link">
-                    Collections
-                </div>
-
-                <div class="dropdown-nav">
-                    Spark
-                </div>
+            <div class="player-wrapper">
+                <input type="text" id="player-four" placeholder="Player 4">
+                <input type="text" id="player-four-value" placeholder="0">
+                <span id="bust-four" hidden>Bust</span>
             </div>
         </div>
 
-
-
-        <div class="startup-wrapper">
-            <div class="start-up-button">
-                <button type="button" class="nav-btn">
-                    Create
-                    <i class="fas fa-chevron-down"></i>
-                </button>
-            </div>
-
-            <div class="start-up-icon">
-                <i class="fas fa-search"></i>
-            </div>
-
-            <div class="start-up-button">
-                <button type="button" class="nav-btn">
-                    Login
-                </button>
-            </div>
-
-            <div class="start-up-button">
-                <button type="submit" class="nav-btn">
-                    Sign Up
-                </button>
-            </div>
-        </div>
-
-
-    </div>
-
-    <div class="body-wrapper">
-        <div class="body-left">
-            <div class="body-text">
-                <p>CodePen is a <b>social development
-                        environment</b> for front-end designers
-                    and developers. <i class="em em-wave"></i>
-                </p>
-            </div>
-
-            <div class="body-text-two">
-                <p>
-                    It's the best place to build and deploy a
-                    website, show off your work, build test cases,
-                    and find inspiration.
-                </p>
-            </div>
-
-            <div class="body-buttons">
-                <button type="button" class="signup-btn">
-                    Sign Up for Free
-                </button>
-
-                <button type="button" class="learn-more-btn">
-                    Learn More
-                </button>
-            </div>
-        </div>
-
-        <div class="body-right">
-            <div class="body-img-header">
-                This is <span style="color: #25F9EA">CodePen Projects</span>!
-            </div>
-
-            <div class="body-image">
-                <img src="images/codepen8_snip.PNG" alt="image">
-            </div>
-        </div>
-
-
-    </div>
-
-    <div class="footer">
-        <div class="footer-box">
-            <div class="footer-textbox">
-                CodePen for  <span style="font-size: 1.3em">TEAMS</span>
-            </div>
-        </div>
-
-        <div class="footer-box">
-            <div class="footer-textbox">
-                CodePen for  <span style="font-size: 1.3em">EDUCATION</span>
-            </div>
-        </div>
-
-        <div class="footer-box">
-            <div class="footer-textbox">
-                CodePen for  <span style="font-size: 1.3em">PRIVACY</span>
-            </div>
-        </div>
-
-        <div class="footer-box">
-            <div class="footer-textbox">
-                CodePen for  <span style="font-size: 1.3em">WRITING</span>
-            </div>
+        <div class="dealer-wrapper">
+            <input type="text" id="dealer" placeholder="Dealer">
+            <input type="text" id="dealer-value" placeholder="0">
+            <span id="bust-dealer" hidden>Bust</span>
         </div>
     </div>
 
-    <div class="end-space">
-    </div>
 
+    <div class="bottom-div">
+       
+        <div class="to-play-div">
+            To Play: <span id="player"> Dealer</span>
+        </div> 
+
+        <div class="action-wrapper">
+            <div class="deal-button">
+                <button id="deal" onclick="deal()">Deal</button>
+            </div>
+            <div class="hit-button">
+                <button id="hit" onclick="hit(1)" disabled="true">Hit</button>
+            </div>
+            <div class="pass-button">
+                <button id="pass" onclick="pass(1)" disabled="true">Pass</button>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
