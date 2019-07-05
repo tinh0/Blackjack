@@ -15,7 +15,7 @@ body {
     display: flex;
     background-color: green;
     width: 100%;
-    height: 95vh;
+    height: 120vh;
 }
 
 .main-wrapper > .left-wrapper {
@@ -28,7 +28,7 @@ body {
 .main-wrapper > .left-wrapper > .player-wrapper {
     border-top: 3px white dotted;
     border-right: 3px white dotted;
-    height: 200px;
+    height: 225px;
     display: flex;
     flex-direction: column;
     margin-bottom: 5px;
@@ -95,7 +95,7 @@ body {
     float: right;
 }
 
-.card-holder {
+#player1-cards, #player2-cards, #player3-cards, #player4-cards {
     display: flex;
     margin-left: 20px;
 }
@@ -104,19 +104,24 @@ body {
     height: 140px;
     width: 100px;
     background-color: white;
-    border-radius: 2px;
+    border-radius: 4px;
     margin-top: 20px;
     margin-left: 15px;
     margin-bottom: 20px;
     position: relative;
 }
 
-#dealer-card-holder {
+#dealer-cards {
     display: grid;
     grid-template-columns: auto auto auto auto;
-    width: 115%;
+    width: 600px;
     margin-bottom: 20px;
     border-bottom: 3px white dotted;
+    border-right: 3px white dotted;
+}
+
+.dealer-wrapper {
+    border-top: 3px white dotted;
 }
 
 .top-value {
@@ -144,5 +149,13 @@ body {
     width: 50px;
     padding: 45px 25px;
     background-color: white;
+}
+
+.value {
+    color: white;
+    text-decoration: bold;
+    font-size: 1.5em;
+    display: flex;
+    justify-content: space-between;
 }
 
