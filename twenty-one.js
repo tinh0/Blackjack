@@ -243,7 +243,6 @@ function dealerHit() {
 }
 
 function createCard(player, arr) {
-
     var cardNumber = arr.length - 1
     var targetCard = document.getElementById(player).getElementsByClassName("card")[cardNumber];
     var formatString = player.substr(0, player.indexOf("-")) + arr.length;
@@ -343,13 +342,8 @@ function checkForWin() {
     if (fourV > dealerV) {
         wins4++;
     }
-
-    console.log(oneV);
-    console.log(wins1);
     document.getElementById("player-one-wins").value = wins1;
     document.getElementById("player-two-wins").value = wins2;
     document.getElementById("player-three-wins").value = wins3;
-    document.getElementById("player-four-wins").value = wins4;
-
-    
+    document.getElementById("player-four-wins").value = wins4; 
 }
